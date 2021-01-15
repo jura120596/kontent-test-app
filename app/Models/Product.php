@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\ProductChanged;
 use App\Http\Requests\Products\CreateProductRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,4 +61,9 @@ class Product extends Model
         });
     }
 
+    protected function finishSave(array $options)
+    {
+        ProductChanged::dispatch($this);
+        parent::finishSave($options);
+    }
 }
