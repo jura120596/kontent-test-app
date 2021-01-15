@@ -65,7 +65,7 @@ class ImportJsonProducts extends Command
             $products[$i] = $p = ProductService::create($product);
             if ($p->exists) $p->categories()->saveMany(
                 Arr::where($categories, function($c) use ($product) {
-                    return array_search($c->eId, dump($product)['categoriesEId']);
+                    return array_search($c->eId, $product['categoriesEId']);
             }));
         }
     }
