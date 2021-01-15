@@ -28,6 +28,6 @@ class SendProductChangedListener
      */
     public function handle(ProductChanged $event)
     {
-        Mail::to('jura120596@gmail.com')->send(new ProductChangedNotification());
+        Mail::to(config('mail.to.dev'))->send(new ProductChangedNotification());
     }
 }
