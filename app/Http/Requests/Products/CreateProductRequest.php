@@ -24,10 +24,6 @@ class CreateProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'eId' => 'nullable|int',
-            'title' => 'required|string|min:' . Product::MIN_TITLE_LENGTH . '|max:' . Product::MAX_TITLE_LENGTH,
-            'price' => 'required|numeric|min:' . Product::MIN_PRICE . '|max:' . Product::MAX_PRICE,
-        ];
+        return Product::$rules;
     }
 }
